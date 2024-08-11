@@ -56,7 +56,7 @@ L2-Board's architecture is designed to seamlessly integrate, process, and presen
 
 ```mermaid
 graph TD
-    A[Blockchain Data Extraction] --> B[ETL Process (AWS Airflow)]
+    A[Blockchain Data Extraction] --> B[ETL Process]
     B --> C[AI Layer]
     C --> D[Database Storage]
     D --> E[Dashboard Delivery]
@@ -64,6 +64,7 @@ graph TD
     E --> G[L2 Protocols]
     E --> H[Bridging Visualization]
     E --> I[Contract Tab]
+
 ```
 
 This flowchart illustrates the flow of data from extraction to dashboard delivery, with each step in the process clearly defined.
