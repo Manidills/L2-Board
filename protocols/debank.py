@@ -18,6 +18,12 @@ def chat_bot(prompt):
 
     return response
 
+@st.cache_resource
+def generate_summary(df):
+    csv_data_str = df.to_string(index=False)
+    prompt = f"Here opbnb L2 debank protocol data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and there connections in points"
+    st.write(chat_bot(prompt))
+
 
 # Define the API endpoint and your API key
 API_URL = "https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -49,6 +55,8 @@ def data(query_id):
         return df
     
 def debank():
+    prompt = f"Explain about  debank  protocol  in 3 points"
+    st.write(chat_bot(prompt))
     st.markdown("##")
     a,b = st.columns([2,2])
     df = data("2772498")
@@ -129,10 +137,7 @@ def debank():
         ), use_container_width=True
         )
 
-    csv_data_str = df.to_string(index=False)
-    # Format the string to be used as input for ChatGPT
-    prompt = f"Here is debank protocol Layer 2 data across blockchain:\n{csv_data_str}\ngive some short summary insights about the data in 3 sentances"
-
+    generate_summary(df)
     # response = get_response(prompt)
     st.write(chat_bot(prompt))
 
@@ -216,6 +221,8 @@ def debank():
         ),
         use_container_width=True
     )
+
+    generate_summary(df)
 
     
 

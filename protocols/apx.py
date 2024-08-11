@@ -18,6 +18,12 @@ def chat_bot(prompt):
 
     return response
 
+@st.cache_resource
+def generate_summary(df):
+    csv_data_str = df.to_string(index=False)
+    prompt = f"Here opbnb L2 apx protocol data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and there connections in points"
+    st.write(chat_bot(prompt))
+
 
 # Define the API endpoint and your API key
 API_URL = "https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -51,6 +57,9 @@ def data(query_id):
 
 
 def apx():
+
+    prompt = f"Explain about  apx protocol  in 3 points"
+    st.write(chat_bot(prompt))
     st.markdown("##")
     df = data("3271669")
 
@@ -70,10 +79,8 @@ def apx():
         ),
         use_container_width=True
     )
-
-    csv_data_str = df.to_string(index=False)
-    # Format the string to be used as input for ChatGPT
-    prompt = f"Here is APX opbnb data:\n{csv_data_str}\ngive some short summary insights about the data insights in 4 sentences"
+    generate_summary(df)
+    
 
     # response = get_response(prompt)
     st.write(chat_bot(prompt))
@@ -219,5 +226,6 @@ def apx():
     st.subheader("Opbnb - V2 Liquidation Status")
     st.markdown("##")
     st.dataframe( data("3271777"), width=1200)
+    generate_summary(df)
 
     

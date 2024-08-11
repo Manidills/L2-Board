@@ -18,6 +18,12 @@ def chat_bot(prompt):
 
     return response
 
+@st.cache_resource
+def generate_summary(df):
+    csv_data_str = df.to_string(index=False)
+    prompt = f"Here opbnb L2 chain myshell.ai data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and there connections in points"
+    st.write(chat_bot(prompt))
+
 
 # Define the API endpoint and your API key
 API_URL = "https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -51,6 +57,8 @@ def data(query_id):
 
 
 def myshell():
+    prompt = f"Explain about  myshell.ai protocol  in 3 points"
+    st.write(chat_bot(prompt))
     st.markdown("##")
     a,b = st.columns([2,2])
     df = data("3933070")
@@ -122,11 +130,7 @@ def myshell():
     ), use_container_width=True
     )
 
-    csv_data_str = df_1.to_string(index=False)
-
-    prompt = f"Here MYshell AIPP data:\n{csv_data_str}\ngive some short summary insights about the data in 6 senetances"
-    st.markdown("##")
-    st.write(chat_bot(prompt))
+    generate_summary(df)
 
     st.markdown("##")
     st.subheader("Net BNB income in AIpp")

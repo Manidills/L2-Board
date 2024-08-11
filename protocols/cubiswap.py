@@ -16,9 +16,27 @@ def hour(timerange):
     response = requests.get(url, headers=headers)
     data = response.json()
     return data
-    
+
+def chat_bot(prompt):
+    response = g4f.ChatCompletion.create(
+        # model="gpt-3.5-turbo",
+        model=g4f.models.default,
+        messages=[{"role": "user", "content": prompt}],
+        stream=True,
+    )
+
+    return response
+
+
+@st.cache_resource
+def generate_summary(df):
+    csv_data_str = df.to_string(index=False)
+    prompt = f"Here opbnb L2 cubiswap data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and there connections in points"
+    st.write(chat_bot(prompt))
 
 def cubiswap():
+    prompt = f"Explain about  cubiswap protocol (L2)  in 3 points"
+    st.write(chat_bot(prompt))
     # normalized_volumes
     st.markdown("##")
 
@@ -148,6 +166,8 @@ def cubiswap():
         ),
         use_container_width=True
     )
+
+    generate_summary(df)
 
 
     

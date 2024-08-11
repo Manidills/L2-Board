@@ -18,6 +18,12 @@ def chat_bot(prompt):
 
     return response
 
+@st.cache_resource
+def generate_summary(df):
+    csv_data_str = df.to_string(index=False)
+    prompt = f"Here opbnb L2 chain pancake perpetual data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and there connections in points"
+    st.write(chat_bot(prompt))
+
 
 # Define the API endpoint and your API key
 API_URL = "https://api.dune.com/api/v1/query/{query_id}/results/csv"
@@ -50,6 +56,8 @@ def data(query_id):
     
 
 def pancake():
+    prompt = f"Explain about  pancake perpetual protocol  3 points"
+    st.write(chat_bot(prompt))
     st.markdown("##")
     st.subheader("PCS Perp V2 Monthly")
     st.markdown("##")
@@ -155,9 +163,4 @@ def pancake():
     st.markdown("##")
     st.dataframe( df, width=1200)
 
-    csv_data_str = df.to_string(index=False)
-    # Format the string to be used as input for ChatGPT
-    prompt = f"Here is pancakeswap opbnb data a:\n{csv_data_str}\ngive some short summary insights about the data insights"
-
-    # response = get_response(prompt)
-    st.write(chat_bot(prompt))
+    generate_summary(df)

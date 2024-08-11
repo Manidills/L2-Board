@@ -8,6 +8,23 @@ import time
 import os
 import g4f
 
+
+def chat_bot(prompt):
+    response = g4f.ChatCompletion.create(
+        # model="gpt-3.5-turbo",
+        model=g4f.models.default,
+        messages=[{"role": "user", "content": prompt}],
+        stream=True,
+    )
+
+    return response
+
+@st.cache_resource
+def generate_summary(df):
+    csv_data_str = df.to_string(index=False)
+    prompt = f"Here opbnb L2 derpdex protocol data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and there connections in points"
+    st.write(chat_bot(prompt))
+
 def hour(timerange):
     url = f'https://www.coingecko.com/exchanges/1301/usd/{timerange}.json'
     headers = {
@@ -19,6 +36,8 @@ def hour(timerange):
     
 
 def derpdex():
+    prompt = f"Explain about  derpdex protocol  in 3 points"
+    st.write(chat_bot(prompt))
     # normalized_volumes
     st.markdown("##")
 
@@ -148,6 +167,8 @@ def derpdex():
         ),
         use_container_width=True
     )
+
+    generate_summary(df)
 
 
     
