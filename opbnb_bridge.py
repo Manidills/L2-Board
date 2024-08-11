@@ -6,6 +6,7 @@ import json
 from pyvis.network import Network
 import tempfile
 import g4f
+from streamlit.components.v1 import html
 
 
 def chat_bot(prompt):
