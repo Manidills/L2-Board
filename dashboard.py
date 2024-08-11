@@ -6,7 +6,6 @@ import datetime
 import altair as alt
 import time
 import os
-from langdetect import detect
 import g4f
 
 def get_response(prompt):
