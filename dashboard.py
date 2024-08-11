@@ -75,6 +75,12 @@ def data(query_id):
 
 def home():
 
+    a,b = st.columns([2,2])
+    with a:
+        st.metrics("Total Value Locked", "$27,475,795",0.9)
+    with b:
+        st.metric("24h Trading Volume", "$137,840",3.9)
+
     st.header("Deposits")
     st.markdown("##")
     a,b = st.columns([2,2])
