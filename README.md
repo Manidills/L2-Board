@@ -42,14 +42,28 @@ L2-Board is an advanced analytics dashboard designed to provide comprehensive in
 
 ### Architecture
 
-L2-Board's architecture is designed to seamlessly integrate, process, and present complex data. Here's a breakdown:
+L2-Board's architecture is designed to seamlessly integrate, process, and present complex data. The following flowchart provides a visual representation of the architecture:
+
+```mermaid
+graph TD
+    A[Blockchain Data Extraction] --> B[ETL Process]
+    B --> C[AI Layer]
+    C --> D[Database Storage]
+    D --> E[Dashboard Delivery]
+    E --> F[OPBNB Analytics]
+    E --> G[L2 Protocols]
+    E --> H[Bridging Visualization]
+    E --> I[Contract Tab]
+
+```
+
+#### Flowchart Description:
 
 1. **Data Extraction:** We extract data directly from blockchain blocks.
 2. **ETL Process:** Data preprocessing is conducted through our ETL process, orchestrated by AWS Airflow DAGs.
 3. **AI Layer:** Our AI layer, built with LLMs that are continuously trained, validates data quality before it's stored in the database.
 4. **Dashboard Delivery:** Validated data is fed into our dashboard, where AI agents provide actionable insights.
-
-![Architecture Diagram](path-to-your-diagram.png)
+5. **Feature Tabs:** The data is then made available in various tabs of the dashboard (OPBNB Analytics, L2 Protocols, Bridging Visualization, Contract Tab), each offering unique insights and capabilities.
 
 ---
 
