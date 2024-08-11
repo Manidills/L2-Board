@@ -57,7 +57,7 @@ def data(query_id):
 
 
 def myshell():
-    prompt = f"Explain about  myshell.ai protocol  in 3 points"
+    prompt = f"Explain about  myshell.ai decentralized sta king AI native apps protocol  in 3 points"
     st.write(chat_bot(prompt))
     st.markdown("##")
     a,b = st.columns([2,2])
