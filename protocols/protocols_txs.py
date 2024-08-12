@@ -22,7 +22,7 @@ def pro_txt():
     st.title("List of Protocols")
 
     # Select boxes for user input
-    page = st.selectbox("Select Page", options=range(1, 21), index=6)  # Page range from 1 to 20
+    page = st.selectbox("Select Page", options=range(1, 21), index=0)  # Page range from 1 to 20
     sort_granularity = st.selectbox("Select Granularity", options=['daily', 'weekly', 'monthly'], index=2)
 
     # Fetch data based on user inputs
