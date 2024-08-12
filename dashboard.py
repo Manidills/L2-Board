@@ -37,7 +37,7 @@ def chat_bot(prompt):
 @st.cache_resource
 def generate_summary(df):
     csv_data_str = df.to_string(index=False)
-    prompt = f"Here opbnb L2 chain data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and there connections in points"
+    prompt = f"Here opbnb L2 chain data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and suggest us a good time for the investments in points"
     st.write(chat_bot(prompt))
 
 
