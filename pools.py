@@ -37,9 +37,9 @@ def pools():
 
     if dex == 'All':
         # API request
-        url = f"https://api.geckoterminal.com/api/v2/networks/opbnb/pools?page=1&sort=&sort=h24_tx_count_desc"
+        url = f"https://api.geckoterminal.com/api/v2/networks/opbnb/pools?page={page}&sort={sort}"
     else:
-        url = f"https://app.geckoterminal.com/api/p1/opbnb/pools?page={page}&include_network_metrics=true&sort={sort}&networks=opbnb&?dex={dex}&dexes={dex}"
+        url = f"https://api.geckoterminal.com/api/v2/networks/opbnb/dexes/{dex}/pools?page={page}&sort={sort}"
 
     headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
@@ -57,6 +57,7 @@ def pools():
             "Pool Name": attributes["name"],
             "Address": attributes["address"],
             "Volume (USD)": attributes["volume_usd"],
+            "24h Volume (USD)": attributes["volume_usd"]['h24'],
             "Price Change": attributes["price_change_percentage"],
             "Price (USD)": attributes["base_token_price_usd"],
             "Reserve (USD)": attributes["reserve_in_usd"],
@@ -74,28 +75,28 @@ def pools():
     # Convert to DataFrame
     df = pd.DataFrame(formatted_data)
 
-    # # Create columns
-    # col1, col2 = st.columns(2)
+    # Create columns
+    col1, col2 = st.columns(2)
 
-    # # Pie chart for Pool Name / 24h Volume
-    # with col1:
-    #     st.write("### Pool Name / 24h Volume (USD)")
-    #     pie_chart_24h_volume = alt.Chart(df).mark_arc().encode(
-    #         theta=alt.Theta(field="24h Volume (USD)", type="quantitative"),
-    #         color=alt.Color(field="Pool Name", type="nominal"),
-    #         tooltip=["Pool Name", "24h Volume (USD)"]
-    #     ).properties(width=350, height=350)
-    #     st.altair_chart(pie_chart_24h_volume, use_container_width=True)
+    # Pie chart for Pool Name / 24h Volume
+    with col1:
+        st.write("### Pool Name / 24h Volume (USD)")
+        pie_chart_24h_volume = alt.Chart(df).mark_arc().encode(
+            theta=alt.Theta(field="24h Volume (USD)", type="quantitative"),
+            color=alt.Color(field="Pool Name", type="nominal"),
+            tooltip=["Pool Name", "24h Volume (USD)"]
+        ).properties(width=350, height=350)
+        st.altair_chart(pie_chart_24h_volume, use_container_width=True)
 
-    # # Pie chart for Pool Name / Reserve (USD)
-    # with col2:
-    #     st.write("### Pool Name / Reserve (USD)")
-    #     pie_chart_reserve = alt.Chart(df).mark_arc().encode(
-    #         theta=alt.Theta(field="Reserve (USD)", type="quantitative"),
-    #         color=alt.Color(field="Pool Name", type="nominal"),
-    #         tooltip=["Pool Name", "Reserve (USD)"]
-    #     ).properties(width=350, height=350)
-    #     st.altair_chart(pie_chart_reserve, use_container_width=True)
+    # Pie chart for Pool Name / Reserve (USD)
+    with col2:
+        st.write("### Pool Name / Reserve (USD)")
+        pie_chart_reserve = alt.Chart(df).mark_arc().encode(
+            theta=alt.Theta(field="Reserve (USD)", type="quantitative"),
+            color=alt.Color(field="Pool Name", type="nominal"),
+            tooltip=["Pool Name", "Reserve (USD)"]
+        ).properties(width=350, height=350)
+        st.altair_chart(pie_chart_reserve, use_container_width=True)
 
     st.markdown("##")
     generate_summary(df)
