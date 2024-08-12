@@ -46,6 +46,7 @@ def pools():
 }
     response = requests.get(url,headers=headers)
     st.write(response)
+    st.write(response.text)
     data = response.json()
 
     # Extract relevant data
