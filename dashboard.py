@@ -40,6 +40,12 @@ def generate_summary(df):
     prompt = f"Here opbnb L2 chain data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and suggest us a good time for the investments in points"
     st.write(chat_bot(prompt))
 
+@st.cache_resource
+def generate_summary_p(df):
+    csv_data_str = df.to_string(index=False)
+    prompt = f"Here opbnb L2 chain data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and in points"
+    st.write(chat_bot(prompt))
+
 
 
 
@@ -166,7 +172,7 @@ def home():
     ), use_container_width=True
     )
         
-    generate_summary(df)
+    generate_summary_p(df)
         
     st.markdown("####")
     st.header("WITHDRAWAL")
@@ -255,7 +261,7 @@ def home():
     ), use_container_width=True
     )
         
-    generate_summary(df)
+    generate_summary_p(df)
 
 
     st.markdown("##")
