@@ -14,12 +14,13 @@ from protocols.debank import debank
 from protocols.derpdex import derpdex
 from protocols.myshell import myshell
 from protocols.pancake_perpetual_v2 import pancake
+from protocols.protocols_txs import pro_txt
 from protocols.thena import thena
 
 
 
 def protocols_types():
-    attribute = st.radio("Select Protocols", ["Myshell", "DeBank", "APX", "PancakeSwap_Perpetual", 'Thena', "Cubiswap", "Binaryswap", "DerpDex"], horizontal=True)
+    attribute = st.radio("Select Protocols", ["Protocols","Myshell", "DeBank", "APX", "PancakeSwap_Perpetual", 'Thena', "Cubiswap", "Binaryswap", "DerpDex"], horizontal=True)
 
     if attribute == 'Myshell':
         myshell()
@@ -37,3 +38,5 @@ def protocols_types():
         binaryswap()
     elif attribute == 'DerpDex':
         derpdex()
+    elif attribute == 'Protocols':
+        pro_txt()
