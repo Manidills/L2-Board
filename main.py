@@ -3,6 +3,8 @@ from dashboard import home
 from explore import explorer
 from opbnb_bridge import Bridge
 from page import page
+from pool_data import pool_data
+from pools import pools
 from protocols.protocols_list import protocols_types
 
 # Set page configuration
@@ -57,7 +59,10 @@ actions = {
     "OPBNB Analytics": ("📊", home),
     "L2 Protocols": ("🔗", protocols_types),
     "Bridge Visualization": ("🌉", Bridge),
-    "Contracts": ("📜", explorer)
+    "Dexs": ("🍫", pools),
+    "Pools": ("🍻", pool_data),
+    "Contracts": ("📜", explorer),
+
 }
 
 # Create a radio button with icons
