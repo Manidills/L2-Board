@@ -3,58 +3,146 @@ import streamlit as st
 
 
 
+
 def page():
 
-    # Homepage Title
-    st.title("Welcome to the L2 Ecosystem Analytics Dashboard")
 
-    # Project Overview
-    st.markdown("""
-    ### L2 Ecosystem Overview
-    Explore high-level dashboards showcasing aggregated data and key metrics across various L2 solutions integrated with BNB Chain. Our platform provides detailed insights that help developers, investors, and newcomers understand complex data patterns over time.
+    # Overview Section
+    st.title("L2-Board: AI-Driven Analytics Dashboard for BNB Chain Layer 2 Ecosystem")
+    st.write("""
+    L2-Board is an advanced analytics dashboard designed to provide comprehensive insights into the BNB Chain's Layer 2 (L2) ecosystem. Our platform leverages AI agents built with large language models (LLMs) that are continuously trained and refined over time. These AI agents extract, verify, interact, and summarize data across multiple L2 solutions, offering users real-time, actionable insights. Built with the needs of developers, investors, and blockchain enthusiasts in mind, L2-Board delivers a holistic view of the L2 landscape, addressing key metrics such as TVL, transaction volumes, and more.
     """)
 
-    # Features Section
-    st.markdown("## Core Features")
-
-    # Feature 1: OPBNB Chain Analytics
-    st.markdown("""
-    ### 1. OPBNB Chain Analytics
-    - **Visualize Deposits, Withdrawals, and TVL:** Get an in-depth view of the OPBNB chain with detailed metrics on deposits, withdrawals, and total value locked (TVL).
-    - **AI-Driven Insights:** Our AI integration analyzes the data over time, providing actionable insights for better decision-making.
+    # Feature 1: OPBNB Analytics
+    st.header("1. OPBNB Analytics")
+    st.write("""
+    - **Comprehensive Analytics:** Gain deep insights into OPBNB, including metrics such as deposits, withdrawals, transactions, volume, and TVL over time.
+    - **AI Insights:** Our LLM-based AI agents summarize each metric, providing clear, concise interpretations to help users make informed decisions.
     """)
 
-    # Feature 2: L2 Protocols Analytics
-    st.markdown("""
-    ### 2. L2 Protocols Analytics
-    - **Comprehensive Insights:** Gain detailed analytics on top-performing protocols in the BNB L2 ecosystem, including Myshell, DeBank, APX, PancakeSwap Perpetual, Thena, Cubiswap, Binaryswap, and DerpDex.
-    - **AI-Enhanced Analytics:** Our AI model continuously analyzes data, offering insights into protocol performance, trends, and opportunities for optimization.
-    - **Expandable Coverage:** We're constantly adding new protocols to our analytics suite, ensuring you're always up-to-date with the latest in the L2 ecosystem.
+    # Feature 2: L2 Protocols
+    st.header("2. L2 Protocols")
+    st.write("""
+    The L2 Protocols section offers detailed analytics on various protocols operating within the OPBNB Layer 2 ecosystem. L2-Board currently supports **120 protocols**, providing basic metrics such as weekly and monthly values for user activity and transaction volumes. The following protocols feature AI-driven, in-depth analytics, offering detailed insights into performance, scalability, and user adoption:
+    """)
+    st.write("""
+    - **Myshell AI:** MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.
+    - **DeBank:** A comprehensive DeFi wallet and portfolio tracker that integrates with multiple chains, including OPBNB. L2-Board tracks the interaction between DeBank and the OPBNB ecosystem, focusing on asset management, transaction volumes, and user adoption metrics.
+    - **APX:** A decentralized exchange (DEX) operating on OPBNB, known for its low fees and fast transaction speeds. L2-Board delivers insights into trading volumes, liquidity depth, and fee structures within the APX platform.
+    - **PancakeSwap Perpetual:** An extension of PancakeSwap's popular DEX, offering perpetual contract trading on OPBNB. L2-Board provides analytics on perpetual trading volumes, open interest, and funding rates, helping users understand the dynamics of perpetual markets.
+    - **Thena:** A decentralized lending and borrowing protocol on OPBNB. L2-Board tracks loan origination, collateral management, and interest rates, giving users a clear view of the lending market's health and growth.
+    - **Cubiswap:** A DEX that focuses on stablecoin trading and low-slippage swaps on OPBNB. L2-Board offers insights into trading volumes, liquidity, and the stability of Cubiswap's markets.
+    - **Binaryswap:** A protocol for binary options trading on OPBNB, offering high-risk, high-reward trading opportunities. L2-Board monitors trading activity, option pricing, and payout ratios within Binaryswap.
+    - **DerpDex:** A decentralized derivatives exchange on OPBNB, providing options and futures trading. L2-Board provides detailed analytics on derivatives volumes, pricing trends, and market participation.
+    - **Ongoing Expansion:** We are actively working to add more protocols over time. Each supported protocol includes detailed analytics on performance, fees, scalability, and security, with insights generated by our continuously trained AI models.
     """)
 
-    # Feature 3: Bridge Users Transactions Network Visualization
-    st.markdown("""
-    ### 3. Bridge Users Transactions Network Visualization
-    - **Network Graphs:** Visualize user transactions across different bridges with interactive network graphs.
-    - **Data Download:** Easily download transaction data for further analysis or reporting.
-    - **AI-Powered Insights:** The AI integration highlights key patterns and trends, making it easier to understand cross-chain activities.
+    # Feature 3: DEXs
+    st.header("3. DEXs")
+    st.write("""
+    - **Pool Insights:** The DEXs feature provides insights into pools across popular DEXs within the OPBNB network. The DEXs analyzed include those integrated within the L2 Protocols section, such as APX, PancakeSwap Perpetual, Cubiswap, and DerpDex. L2-Board not only tracks the standard metrics for these DEXs, such as trading volumes, liquidity, and fees, but also offers **investment advice** on when to buy and sell, based on AI-driven analysis of market trends and data. Additionally, users can input a specific pool address to receive in-depth analysis, suggested investment strategies, and access to downloadable data, along with candlestick chart visualizations.
+    - **Investment Advice:** Our AI agent analyzes data from DEXs to provide actionable investment advice, including optimal times to buy and sell assets.
     """)
 
-    # Feature 4: Contracts ABI and Source Code Data Extraction
-    st.markdown("""
-    ### 4. Contracts ABI and Source Code Data Extraction
-    - **Detailed Data Extraction:** Access and extract ABI and source code data for L2 contracts.
-    - **AI-Enhanced Analysis:** Our AI tools analyze contract data, providing insights into potential vulnerabilities, performance issues, and optimization opportunities.
+    # Feature 4: Pools
+    st.header("4. Pools")
+    st.write("""
+    - **In-Depth Analysis:** Offers comprehensive insights into a specific pool address provided by the user.
+    - **Investment Strategies:** The AI agent suggests tailored investment strategies based on pool data.
+    - **Data Download & Visualization:** Users can download data and view it in candlestick chart format for better decision-making.
     """)
 
-    # AI Integration and Subscription Model
-    st.markdown("""
-    ## AI-Integrated Analytics Dashboard
-
-    Our platform is AI-integrated, allowing for continuous analysis of data across the L2 ecosystem. Each dashboard provides insights that evolve with the data, offering clear, actionable intelligence to developers, investors, and newcomers. 
-
-    ### Key Features:
-    - **Automated Insights:** The AI model identifies important patterns and trends over time, providing notifications when significant changes or opportunities are detected.
-    - **Subscription Model:** Stay ahead of the curve with our subscription service, which delivers timely notifications and updates on specific protocols or metrics.
-    - **Protocol Inclusion:** Interested in having your protocol included? Connect with us to have your proposals added to our analytics suite as soon as possible.
+    # Feature 5: Bridging Visualization
+    st.header("5. Bridging Visualization")
+    st.write("""
+    - **Connection Mapping:** Visualize and summarize transactions related to deposits and withdrawals across L2s.
+    - **AI-Driven Connections:** Our AI agents identify and illustrate the data connections, highlighting key patterns in the bridging activities.
     """)
+
+    # Feature 6: Contract Tab
+    st.header("6. Contract Tab")
+    st.write("""
+    - **Contract Extraction:** Easily extract contracts, source code, and metadata.
+    - **Developer Support:** Provides all necessary information for developers to download and work with contracts efficiently.
+    """)
+
+    # Architecture Section
+    st.subheader("Architecture")
+    st.write("""
+    L2-Board's architecture is designed to seamlessly integrate, process, and present complex data. The following flowchart provides a visual representation of the architecture:
+    """)
+   
+    graph_code = """
+    digraph G {
+        A [label="Blockchain Data Extraction"];
+        B [label="ETL Process"];
+        C [label="AI Layer"];
+        D [label="Database Storage"];
+        E [label="Dashboard Delivery"];
+        F [label="OPBNB Analytics"];
+        G [label="L2 Protocols"];
+        H [label="Bridging Visualization"];
+        I [label="Contract Tab"];
+        J [label="DEXs"];
+        K [label="Pools"];
+        
+        A -> B;
+        B -> C;
+        C -> D;
+        D -> E;
+        E -> F;
+        E -> G;
+        E -> H;
+        E -> I;
+        E -> J;
+        E -> K;
+    }
+    """
+
+    # Display the flowchart in Streamlit using the graphviz_chart function
+    st.graphviz_chart(graph_code)
+
+
+    # Meeting Objectives Section
+    st.subheader("Meeting the Objectives")
+    st.write("""
+    - **L2 Ecosystem Overview:** Our high-level dashboard aggregates data from multiple L2 solutions, offering a comprehensive overview of the BNB Chain's L2 ecosystem.
+    - **Chain-Specific Deep Dives:** Users can drill down into individual L2 chains to explore specific metrics like TVL, transaction volumes, and more. Our LLM-based AI insights further clarify the data.
+    - **Comparative Analytics:** L2-Board facilitates direct comparisons between L2 solutions, evaluating performance, fees, scalability, and security to aid decision-making.
+    """)
+
+    # Addressing Challenges Section
+    st.subheader("Addressing the Challenges")
+    st.write("""
+    - **Data Sources:** We've integrated reliable data feeds from L2 explorers, blockchains, and top analytics platforms to ensure accuracy and relevance.
+    - **Usability:** L2-Board's interface is designed to be visually appealing and user-friendly, catering to both technical and non-technical audiences.
+    - **Real-time Updates:** Our dashboard offers near real-time updates on key metrics, keeping users informed of the rapidly changing L2 landscape.
+    - **Educational Component:** L2-Board includes educational resources and explanations to help users understand various L2 technologies and their implications.
+    """)
+
+    st.subheader("How L2-Board Meets User Needs")
+    st.write("""
+
+#### **For Developers:**
+- **Optimized L2 Selection:** 
+  - **OPBNB Analytics:** Provides detailed metrics such as deposits, withdrawals, transactions, volume, and TVL over time, helping developers evaluate OPBNB's suitability for their dApps.
+  - **L2 Protocols Tab:** Offers analytics on multiple L2 protocols (e.g., Myshell, DeBank, PancakeSwap Perpetual), allowing developers to compare and choose the best L2 solution based on performance, fees, scalability, and security features.
+  - **Contract Tab:** Enables developers to extract contracts, source code, and metadata easily, streamlining the development process and reducing time to market.
+
+#### **For Investors:**
+- **Informed Investment Decisions:**
+  - **L2 Protocols Tab:** Delivers insights into L2 adoption, TVL trends, and emerging L2 projects across multiple protocols, helping investors identify growth opportunities.
+  - **DEXs Tab:** Analyzes data from popular DEXs to provide actionable investment advice, including optimal buy/sell timings.
+  - **Pools Tab:** Offers in-depth analysis of specific pool addresses, with tailored investment strategies and data visualization options, empowering investors to make data-driven decisions.
+
+#### **For BNB Chain Enthusiasts:**
+- **Monitoring L2 Ecosystem Health:**
+  - **L2 Ecosystem Overview:** Aggregates data from multiple L2 solutions on the BNB Chain, offering a high-level view of the ecosystem’s overall health and growth.
+  - **Real-time Updates:** Keeps enthusiasts informed with near real-time metrics, ensuring they stay up-to-date with the rapidly changing landscape.
+  - **Educational Resources:** Provides explanations and resources to help users understand L2 technologies, fostering greater community engagement and awareness.
+
+
+""")
+
+    # Footer or Final Remarks
+    st.write("**L2-Board** effectively meets the diverse needs of developers, investors, and BNB Chain enthusiasts, ensuring that all users can navigate the expanding L2 landscape with confidence and clarity. Our continuously trained AI agents and robust architecture make L2-Board a powerful tool for understanding and leveraging the growth of Layer 2 solutions on the BNB Chain.")

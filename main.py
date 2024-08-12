@@ -6,6 +6,7 @@ from page import page
 from pool_data import pool_data
 from pools import pools
 from protocols.protocols_list import protocols_types
+from streamlit.components.v1 import html
 
 # Set page configuration
 st.set_page_config(

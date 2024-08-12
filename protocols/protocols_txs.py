@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 import altair as alt
 from datetime import datetime
+import g4f
 
 # Function to fetch data from the API
 def fetch_data(page, sort_granularity):
@@ -14,6 +15,23 @@ def fetch_data(page, sort_granularity):
 # Function to convert timestamp to readable date
 def timestamp_to_date(timestamp):
     return datetime.fromtimestamp(timestamp / 1000).strftime('%Y-%m-%d')
+
+def chat_bot(prompt):
+    response = g4f.ChatCompletion.create(
+        # model="gpt-3.5-turbo",
+        model=g4f.models.default,
+        messages=[{"role": "user", "content": prompt}],
+        stream=True,
+    )
+
+    return response
+
+
+@st.cache_resource
+def generate_summary(df):
+    csv_data_str = df.to_string(index=False)
+    prompt = f"Here opbnb protocols data\n{csv_data_str}\ngive some short summary insights about the data in 6 sentences and which is good invest points"
+    st.write(chat_bot(prompt))
 
 
 def pro_txt():
@@ -93,6 +111,8 @@ def pro_txt():
 
 
         #st.dataframe(pools)
+
+    generate_summary(formatted_data)
 
 
                     
