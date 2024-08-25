@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 import requests
 import json
@@ -94,6 +95,7 @@ def explorer():
 
     if action == 'Get ABI':
         abi(wallet_address)
+        st.data_editor(pd.read_csv("sql_queries/kiloex.csv"))
     elif action == 'Get Source Code':
         source_code_data=fetch_source_code(wallet_address)
         st.json(source_code_data)

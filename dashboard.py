@@ -86,6 +86,30 @@ def home():
         st.metric("Total Value Locked", "$27,475,795",'0.9')
     with b:
         st.metric("24h Trading Volume", "$137,840",'-3.9')
+
+    st.markdown("##")
+
+    url = "https://api.llama.fi/v2/historicalChainTvl/opbnb"
+    response = requests.get(url)
+    data_ = response.json()
+
+    # Convert the data into a DataFrame
+    df = pd.DataFrame(data_)
+
+    # Convert timestamp to a readable date
+    df['date'] = pd.to_datetime(df['date'], unit='s')
+
+    # Create the area chart using Altair
+    area_chart = alt.Chart(df).mark_area().encode(
+        x='date:T',
+        y='tvl:Q',
+        tooltip=['date:T', 'tvl:Q']
+    ).properties(
+        title='Historical TVL for OPBNB'
+    )
+
+    # Display the chart in Streamlit
+    st.altair_chart(area_chart, use_container_width=True)
     st.markdown("##")
     st.header("Deposits")
     st.markdown("##")
