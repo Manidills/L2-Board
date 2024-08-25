@@ -26,7 +26,7 @@ def generate_summary(df):
 
 
 def pools():
-    st.title("OPBNB Pools Data Viewer")
+    st.title("OPBNB DEXs Data Viewer")
 
     # User inputs for API parameters
     page = st.number_input("Page", min_value=1, value=1)
@@ -74,42 +74,44 @@ def pools():
 
     st.markdown("##")
 
-    api_url = f"https://api.llama.fi/overview/dexs/opbnb?excludeTotalDataChart=false&excludeTotalDataChartBreakdown=false&dataType=totalVolume"
+    if dex == 'All':
 
-    # Fetch data from API
-    response = requests.get(api_url)
-    data = response.json()
+        api_url = f"https://api.llama.fi/overview/dexs/opbnb?excludeTotalDataChart=false&excludeTotalDataChartBreakdown=false&dataType=totalVolume"
 
-    col1, col2, col3 = st.columns([2,2,2])
+        # Fetch data from API
+        response = requests.get(api_url)
+        data = response.json()
 
-    with col1:
-        st.metric("24h", data['total24h'], data['change_1d'])
-    with col2:
-        st.metric("7d", data['total7d'], data['change_7d'])
-    with col3:
-        st.metric('30d', data['total30d'], data['change_1m'])
+        col1, col2, col3 = st.columns([2,2,2])
+
+        with col1:
+            st.metric("24h", data['total24h'], data['change_1d'])
+        with col2:
+            st.metric("7d", data['total7d'], data['change_7d'])
+        with col3:
+            st.metric('30d', data['total30d'], data['change_1m'])
 
 
-    st.markdown("##")
-    # Extract 'totalDataChart' from the response
-    total_data_chart = data.get('totalDataChart', [])
+        st.markdown("##")
+        # Extract 'totalDataChart' from the response
+        total_data_chart = data.get('totalDataChart', [])
 
-    # Convert the data to a pandas DataFrame
-    df = pd.DataFrame(total_data_chart, columns=['Timestamp', 'Total Volume'])
-    df['Timestamp'] = pd.to_datetime(df['Timestamp'], unit='s')  # Convert timestamp to datetime
+        # Convert the data to a pandas DataFrame
+        df = pd.DataFrame(total_data_chart, columns=['Timestamp', 'Total Volume'])
+        df['Timestamp'] = pd.to_datetime(df['Timestamp'], unit='s')  # Convert timestamp to datetime
 
-    st.altair_chart(
-    alt.Chart(df).mark_area(color='bisque', opacity=0.4).encode(
-        x=alt.X('Timestamp:T', title='Hour'),
-        y=alt.Y('Total Volume:Q', title='Total Volume'),
-        tooltip=[alt.Tooltip('hour:T', title='Hour'), alt.Tooltip('Cumulative_USD:Q', title='Cumulative USD Amount')],
-    ).properties(
-        width=800,
-        height=300,
-        title='opBNB DEX Volumes'
-    ), use_container_width=True
-    )
-    st.markdown("##")
+        st.altair_chart(
+        alt.Chart(df).mark_area(color='bisque', opacity=0.4).encode(
+            x=alt.X('Timestamp:T', title='Hour'),
+            y=alt.Y('Total Volume:Q', title='Total Volume'),
+            tooltip=[alt.Tooltip('hour:T', title='Hour'), alt.Tooltip('Cumulative_USD:Q', title='Cumulative USD Amount')],
+        ).properties(
+            width=800,
+            height=300,
+            title='opBNB DEX Volumes'
+        ), use_container_width=True
+        )
+        st.markdown("##")
 
     # Convert to DataFrame
     df = pd.DataFrame(formatted_data)
