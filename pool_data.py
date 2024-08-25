@@ -35,7 +35,7 @@ def pool_data():
     st.title("OPBNB Pool Data Viewer")
 
     # Address input
-    pool_address = st.text_input("Enter Pool Address", placeholder="e.g., 0x8a322bf307aa673424c445f576f2992f381521fb")
+    pool_address = st.text_input("Enter Pool Address","0x8a322bf307aa673424c445f576f2992f381521fb")
     day = st.selectbox("Select time range", ["day", "hour", "minute"])
 
     if pool_address:
