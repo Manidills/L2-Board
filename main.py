@@ -16,12 +16,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
     menu_items={
         'About': "This app generates scripts for data clean rooms!"
-    },
-    theme={
-        "backgroundColor":"#000000",
-        "secondaryBackgroundColor":"#000000",
-        "textColor":"#ddf542",
-        "font":"monospace"
     }
 )
 
